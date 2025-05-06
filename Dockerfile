@@ -1,11 +1,8 @@
-FROM quay.io/keycloak/keycloak:24.0.1
+FROM quay.io/keycloak/keycloak:26.1.0
 
-ENV KEYCLOAK_ADMIN=admin
-ENV KEYCLOAK_ADMIN_PASSWORD=admin
+ENV KC_BOOTSTRAP_ADMIN_USERNAME=admin
+ENV KC_BOOTSTRAP_ADMIN_PASSWORD=admin
 
-ENV KC_HTTP_PORT=${PORT:-8080}
-ENV KC_HOSTNAME_STRICT=false
-ENV KC_HOSTNAME_STRICT_HTTPS=false
-ENV KC_PROXY=edge
+EXPOSE 8080
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--http-port", "${KC_HTTP_PORT}"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
