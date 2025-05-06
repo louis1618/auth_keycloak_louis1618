@@ -8,4 +8,5 @@ ENV KC_HOSTNAME_STRICT=false
 ENV KC_HOSTNAME_STRICT_HTTPS=false
 ENV KC_PROXY=edge
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--http-port", "${KC_HTTP_PORT}"]
+# EntryPoint 수정: kc.sh 실행시 포트 지정
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--http-port", "${KC_HTTP_PORT}", "--hostname-strict=false"]
